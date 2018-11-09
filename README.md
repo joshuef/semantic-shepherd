@@ -16,6 +16,29 @@ Install using yarn (needed for postinstall script/retrieval)
 
 ## Use 
 
+```js
+import shepderd from '../src/shepherd';
+import { Book } from 'schema-doter';
+import rdflib from 'rdflib';
+
+const sampleObject = {
+    'id'            : 'safe://here',
+    'author'        : 'Josh',
+    'publisher'     : 'Somebody'
+};
+
+
+let rdf;
+
+rdf = await shepderd( sampleObject, Book );
+
+
+rdflib.serialize( null, rdf, sampleObject.id, 'text/turtle', ( err, result ) =>
+{
+    console.log( result ) // Logs a turtle graph as a string
+} );
+
+```
 
             
 ## TODO 
