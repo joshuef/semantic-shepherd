@@ -5,7 +5,7 @@ import rdflib from 'rdflib'
 describe( 'shepderd', () =>
 {
     const sampleObject = {
-        id              : 'safE://here',
+        id              : 'safe://here',
         'numberOfPages' : 4,
         'title'         : 'Dave',
         'author'        : 'me',

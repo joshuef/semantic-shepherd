@@ -7,7 +7,7 @@ import rdflib from 'rdflib';
  * @param  {[type]}  schema     [description]
  * @return {Boolean}            [description]
  */
-const rdfThisPlease = (  dataObject, schema ) =>
+const shepherd = (  dataObject, schema ) =>
 {
     if( ! dataObject || typeof dataObject !== 'object' )
     {
@@ -97,4 +97,4 @@ const rdfThisPlease = (  dataObject, schema ) =>
 
 }
 
-export default rdfThisPlease
+export default shepherd

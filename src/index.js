@@ -1,8 +1,6 @@
-import man from './manual';
-import validate from './validator';
+import shepherd from './shepherd';
 
 
 module.exports = {
-    man,
-    validate
+    shepherd
 }
