@@ -24,18 +24,12 @@ const shepherd = (  dataObject, schema ) =>
         throw new Error( 'Schema must have a context defined to extract vocabularies');
     }
 
-    const vocabs = {};
 
     const idUri = dataObject['@id'] || dataObject.id;
 
     if( !idUri ) throw new Error( 'No "id" passed to make RDF (should be a url).' )
 
-    //lets get a simple vocab object setup for RDF
-    Object.entries( schema['@context'] ).forEach( ( [ voc, uri ] ) =>
-    {
-        vocabs[voc] = rdflib.Namespace( uri );
-    } )
-
+    const vocabs = getVocabs( schema );
     logger.trace( 'Vocabs:', vocabs );
 
     const creatingGraph = rdflib.graph();
@@ -92,9 +86,17 @@ const shepherd = (  dataObject, schema ) =>
     } )
 
     return creatingGraph
-
-
-
 }
 
 export default shepherd
+
+export const getVocabs = ( someSchema ) => {
+    const vocabs = {};
+    //lets get a simple vocab object setup for RDF
+    Object.entries( someSchema['@context'] ).forEach( ( [ voc, uri ] ) =>
+    {
+        vocabs[voc] = rdflib.Namespace( uri );
+    } )
+
+    return vocabs;
+}
